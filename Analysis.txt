@@ -1,0 +1,41 @@
+Analysis. Worst Case Big O Notation.
+
+Note: I have approximated the Worst Case Big 0 Notation and I didn't count all the lines.
+Please, let me know otherwise.
+
+Task0.py
+The Big O Notation is constant, O(1) since it always run two print instructions.
+
+Task1.py
+There are two loops with different size we need to iterate in this exercise.
+Texts with a size of n and Calls with size of m, so worst case Big O is O(n*m)
+
+Task2.py
+I realised that perhaps I should not have used the sorted() function with lambda key for this exercise since I needed to
+calculate the Big O based on the exercise.
+Now I understand that I should've looped the input, calls and store the call with the highest duration.
+
+The complexity depends on the size of the input, in this case, the size of calls so it would be O(n).
+
+I guess sorted() function has better complexity than O(n)
+
+Task3.py
+Part A and Part B iterate through calls, that is O(2n) being n the size of calls.
+
+Task4.py
+I created a possible_telemarketers list to store initially all the numbers originating calls and
+then they will be checked if they are in received calls or in texts. If they are found, they will be removed.
+
+There are two nested loops in this exercise. One is looped through the possible_telemarketers which
+initially has the size of calls and the other one is the size of calls.
+possible_telemarketers size gets decrease when any of the numbers are found either in received calls,
+send texts or receive texts
+
+Calls has a size of n.
+possible_telemarketers has also a size of n initially and even though it may get decreased, we don't know
+and therefore, worst case scenario will be n too
+
+Big O is O(n * n)
+
+
+
