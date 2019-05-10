@@ -51,7 +51,7 @@ def bangalore_number(number):
 
     return number.startswith('(080)')
 
-area_codes = []
+area_codes = set()
 total_number_of_calls_from_bangalore = 0
 total_number_of_calls_from_to_bangalore = 0
 
@@ -69,11 +69,9 @@ for call in calls:
         found_mobile = mobile_prefix.match(to_number)
 
         if found_landline:
-            if found_landline.group(1) not in area_codes:
-                area_codes.append(found_landline.group(1))
+            area_codes.add(found_landline.group(1))
         elif found_mobile:
-            if found_mobile.group() not in area_codes:
-                area_codes.append(found_mobile.group())
+            area_codes.add(found_mobile.group())
 
         if bangalore_number(to_number):
             total_number_of_calls_from_to_bangalore += 1
@@ -86,18 +84,5 @@ for area_code in sorted(area_codes):
 
 
 # PART B. Counters implemented in PART A as suggested by the reviewer in https://review.udacity.com/#!/reviews/1824367
-
-# total_number_of_calls = 0
-# total_number_of_calls_from_to_bangalore = 0
-#
-# for call in calls:
-#     from_number, to_number, start_timestamp, duration = call
-#
-#     if bangalore_number(from_number):
-#         if bangalore_number(to_number):
-#             total_number_of_calls += 1
-#             total_number_of_calls_from_to_bangalore += 1
-#         else:
-#             total_number_of_calls += 1
 
 print("%0.2f percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore." % ((total_number_of_calls_from_to_bangalore/total_number_of_calls_from_bangalore)))
