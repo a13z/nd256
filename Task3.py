@@ -84,4 +84,4 @@ for area_code in sorted(area_codes):
 
 # PART B. Counters implemented in PART A as suggested by the reviewer in https://review.udacity.com/#!/reviews/1824367
 
-print("%0.2f percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore." % ((total_number_of_calls_from_to_bangalore/total_number_of_calls_from_bangalore)))
+print("%0.2f percent of calls from fixed lines in Bangalore are calls to other fixed lines in Bangalore." % ((total_number_of_calls_from_to_bangalore/total_number_of_calls_from_bangalore) * 100))
