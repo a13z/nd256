@@ -20,9 +20,22 @@ Print a message:
 September 2016.".
 """
 
-calls_sorted = sorted(calls, key=lambda duration: int(duration[3]), reverse=True)
+phonedict = {}
 
-telephone_number, receiving_number, start_timestamp, duration = calls_sorted[0]
+for call in calls:
 
-print("%r spent the longest time, %r seconds, on the phone during %r" % (receiving_number, duration, start_timestamp))
+    telephone_number, receiving_number, start_timestamp, duration = call
 
+    if telephone_number not in phonedict:
+        phonedict[telephone_number] = int(duration)
+    else:
+        phonedict[telephone_number] += int(duration)
+
+    if receiving_number not in phonedict:
+        phonedict[receiving_number] = int(duration)
+    else:
+        phonedict[receiving_number] += int(duration)
+
+telephone_number_longest_time = max(phonedict, key=lambda i: phonedict[i])
+
+print("%r spent the longest time, %r seconds, on the phone during September 2016" % (telephone_number_longest_time, phonedict[telephone_number_longest_time]))
