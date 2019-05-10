@@ -25,27 +25,16 @@ Print a message:
 The list of numbers should be print out one per line in lexicographic order with no duplicates.
 """
 
-possible_telemarketers = list(dict.fromkeys([line[0] for line in calls]))
+numbers_making_calls = set([line[0] for line in calls])
+numbers_receiving_calls_or_texting = set([line[1] for line in calls])
 
-for number in possible_telemarketers:
-    for call in calls:
-        from_number, to_number, start_timestamp, duration = call
-        if number == to_number:
-            possible_telemarketers.remove(number)
-            break
+for text in texts:
+    from_number, to_number, start_timestamp = text
+    numbers_receiving_calls_or_texting.add(from_number)
+    numbers_receiving_calls_or_texting.add(to_number)
 
-for number in possible_telemarketers:
-    for text in texts:
-        from_number, to_number, start_timestamp = text
-        if number == to_number or number == from_number:
-            possible_telemarketers.remove(number)
-            break
+possible_telemarketers = numbers_making_calls - numbers_receiving_calls_or_texting
 
 print("These numbers could be telemarketers: ")
 for possible_telemarketer in sorted(possible_telemarketers):
     print(possible_telemarketer)
-
-
-
-
-
