@@ -63,7 +63,6 @@ for call in calls:
         # find area codes in the to_number, 2 cases: landlines or mobiles
         landline_prefix = re.compile(r"\((0\d+)\)")
         mobile_prefix = re.compile('(^[789]\d\d\d)')
-        telemarketeer_prefix = re.compile('(^140)')
 
         found_landline = landline_prefix.match(to_number)
         found_mobile = mobile_prefix.match(to_number)
