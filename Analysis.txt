@@ -7,35 +7,57 @@ Task0.py
 The Big O Notation is constant, O(1) since it always run two print instructions.
 
 Task1.py
-There are two loops with different size we need to iterate in this exercise.
-Texts with a size of n and Calls with size of m, so worst case Big O is O(n*m)
+Note: I use set instead of list to avoid the containment check as advised by the reviewer. Thank you!
+
+Since there are two loops with different sizes in sequence, Texts with a size of n and Calls with size of m,
+worst case Big O would be O(n + m)
 
 Task2.py
-I realised that perhaps I should not have used the sorted() function with lambda key for this exercise since I needed to
-calculate the Big O based on the exercise.
-Now I understand that I should've looped the input, calls and store the call with the highest duration.
+Note: I use dict instead of a list as advised by the reviewer. Thank you!
 
-The complexity depends on the size of the input, in this case, the size of calls so it would be O(n).
+There is a loop going through all calls and inside there are two conditions to check if the number is in the
+dictionary. If it is not, it will add it to the phonedict with the duration and if is,
+it will sum the duration to the previous value.
 
-I guess sorted() function has better complexity than O(n)
+The loop has a worst case Big O of O(n) and inside there are two conditions to check if the phone is in
+the phonedict which worst case Big O is O (n) per condition. Based on http://bigocheatsheet.com accesing
+a dictionary (Hash table) has worst case Big O of O (n)
+
+Total Big O would be O (n ^ 3)
+
 
 Task3.py
-Part A and Part B iterate through calls, that is O(2n) being n the size of calls.
+Note: Task has been simplified as per reviewer's suggestion. Many thanks!
+
+Part A.
+Contains a loop to iterate calls and add phone numbers to a set based on some conditions.
+This has a worst case Big O of O (n)
+Then, there is another loop with a sorted() to print the area codes in order.
+This has a cost of Big O (n * n log n) which is O (n^2 log n)
+
+Worst case Big O for Part A would be O (n + n^2 log n)
+
+Part B.
+Worst case Big O would be O (1) since there is just one single instruction.
 
 Task4.py
-I created a possible_telemarketers list to store initially all the numbers originating calls and
-then they will be checked if they are in received calls or in texts. If they are found, they will be removed.
+Note: I use sets as advised by the reviewer. Thanks a lot!
+I created to sets numbers_making_calls and numbers_receiving_calls_or_texting and initialised them with
+two loops. Each initialization has a worst case Big O of O (n) so total would be O (2n)
 
-There are two nested loops in this exercise. One is looped through the possible_telemarketers which
-initially has the size of calls and the other one is the size of calls.
-possible_telemarketers size gets decrease when any of the numbers are found either in received calls,
-send texts or receive texts
+Then I loop through texts in order to add the numbers to the numbers_receiving_calls_or_texting set.
+This has a worst case Big O of O(n)
 
-Calls has a size of n.
-possible_telemarketers has also a size of n initially and even though it may get decreased, we don't know
-and therefore, worst case scenario will be n too
+There is a substraction of two sets numbers_making_calls minus numbers_receiving_calls_or_texting which
+average cost Big O(len(numbers_making_calls)) based on https://wiki.python.org/moin/TimeComplexity.
+I assumed the worst case Big O is the same as the average.
 
-Big O is O(n * n)
+There is a final loop with a sorted() to print the possible telemarketers in order which worst case Big O
+is O (n * n log n)
 
+Total worst case Big O would be O (2n + n + len(numbers_making_calls) + n * n log n) which is
+O (3n + len(numbers_making_calls) + n^2 log n)
+
+I think this could be approximately O (n^2 log n)
 
 
